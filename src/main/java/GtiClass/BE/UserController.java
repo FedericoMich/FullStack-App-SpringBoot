@@ -21,19 +21,27 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 	
 	@Autowired
-	private UserRepository userRepository;
+	private UserRepository ur;
 	
 	
 	 @CrossOrigin
 	@GetMapping
 	public List<User> findAllUsers() {
-	    return (List<User>) userRepository.findAll();
+	    return (List<User>) ur.findAll();
+	}
+	
+
+	@CrossOrigin
+	@PostMapping ("/addStudent")
+	ResponseEntity<String> saveUser(@Validated @RequestBody User user) {
+		ur.save(user);
+		return new ResponseEntity<>("ok!", HttpStatus.OK);
 	}
 	
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<User> findUserById(@PathVariable(value = "id") long id) {
-	    Optional<User> user = userRepository.findById(id);
+	    Optional<User> user = ur.findById(id);
 
 	    if(user.isPresent()) {
 	        return ResponseEntity.ok().body(user.get());
@@ -41,12 +49,10 @@ public class UserController {
 	        return ResponseEntity.notFound().build();
 	    }
 	}
-
-	@CrossOrigin
-	@PostMapping ("/addStudent")
-	public String saveUser(@Validated @RequestBody User user) {
-		userRepository.save(user);
-		return ("ciao");
+	
+	@GetMapping("/hello")
+	ResponseEntity<String> hello() {
+	    return ResponseEntity.ok("Hello World!");
 	}
 	
 

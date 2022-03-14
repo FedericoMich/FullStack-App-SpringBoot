@@ -12,23 +12,23 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-	private String nome;
-    private String cognome;
+	private String name;
+    private String surname;
     private String repos;
 	
     
   
     public String getNome() {
-		return nome;
+		return name;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setNome(String name) {
+		this.name = name;
 	}
 	public String getCognome() {
-		return cognome;
+		return surname;
 	}
-	public void setCognome(String cognome) {
-		this.cognome = cognome;
+	public void setCognome(String surname) {
+		this.surname = surname;
 	}
 	public String getRepos() {
 		return repos;

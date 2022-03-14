@@ -35,7 +35,7 @@ public class UserController {
 	@PostMapping ("/addStudent")
 	ResponseEntity<String> saveUser(@Validated @RequestBody User user) {
 		ur.save(user);
-		return new ResponseEntity<>("ok!", HttpStatus.OK);
+		return null;
 	}
 	
 	

@@ -1,4 +1,4 @@
-package GtiClass.BE;
+package GitClass.BE.BEANS;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,13 +21,13 @@ public class User {
     public String getNome() {
 		return name;
 	}
-	public void setNome(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
-	public String getCognome() {
+	public String getSurname() {
 		return surname;
 	}
-	public void setCognome(String surname) {
+	public void setSurname(String surname) {
 		this.surname = surname;
 	}
 	public String getRepos() {

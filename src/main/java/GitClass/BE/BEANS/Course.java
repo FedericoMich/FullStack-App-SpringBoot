@@ -17,7 +17,7 @@ public class Course {
 
 	
     
-    public String getNome() {
+    public String getName() {
 		return name;
 	}
 	public void setName(String name) {
@@ -26,7 +26,7 @@ public class Course {
 	public String getYear() {
 		return year;
 	}
-	public void setSurname(String year) {
+	public void setYear(String year) {
 		this.year = year;
 	}
 }

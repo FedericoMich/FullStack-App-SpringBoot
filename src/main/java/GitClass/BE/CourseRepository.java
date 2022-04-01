@@ -1,11 +1,10 @@
 package GitClass.BE;
 
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
-
+import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
 import GitClass.BE.BEANS.Course;
 
-@Repository
-public interface CourseRepository extends CrudRepository<Course, Long> {
+public interface CourseRepository extends JpaRepository<Course, Long> {
+	List<Course> findByNameContaining(String name);
 
 }

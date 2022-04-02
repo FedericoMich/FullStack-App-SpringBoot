@@ -39,13 +39,25 @@ public class CourseController {
 			else
 				cr.findByNameContaining(name).forEach(course::add);
 			if (course.isEmpty()) {
-				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+				return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			return new ResponseEntity<>(course, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+	
+	
+	@GetMapping("/{id}")
+	  public ResponseEntity<Course> getCourseById(@PathVariable("id") long id) {
+	    Optional<Course> courseData = cr.findById(id);
+	    if (courseData.isPresent()) {
+	      return new ResponseEntity<>(courseData.get(), HttpStatus.OK);
+	    } else {
+	      return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	    }
+	  }
+	
 
 	@PostMapping("/addCourse")
 	public ResponseEntity<Course> createCourse(@RequestBody Course course) {
@@ -56,7 +68,6 @@ public class CourseController {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-	
 	@PutMapping("/updateCourse/{id}")
 	public ResponseEntity<Course> updateCourse(@PathVariable("id") long id, @RequestBody Course course) {
 		Optional<Course> courseData = cr.findById(id);

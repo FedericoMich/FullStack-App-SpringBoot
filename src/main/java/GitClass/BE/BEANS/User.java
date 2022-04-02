@@ -1,40 +1,58 @@
 package GitClass.BE.BEANS;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
+import javax.persistence.*;
 @Entity
-@Table(name = "user")
+@Table(name = "User")
 public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
+	@Column(name = "name")
 	private String name;
-    private String surname;
-    private String repos;
+	@Column(name = "surname")
+	private String surname;
+	@Column(name = "Userclass")
+	private String userclass;
 	
-    
-  
-    public String getName() {
+	public User() {
+	}
+	public User(long id, String name, String surname, String userclass) {
+		this.name = name;
+		this.surname = surname;
+		this.userclass = userclass;
+	}
+	
+	
+	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getSurname() {
 		return surname;
 	}
+
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
-	public String getRepos() {
-		return repos;
+
+	public String getUserclass() {
+		return userclass;
 	}
-	public void setRepos(String repos) {
-		this.repos = repos;
+
+	public void setUserclass(String userclass) {
+		this.userclass = userclass;
 	}
 	
+	@Override
+	public String toString() {
+		return "Course [id=" + id + ", name=" + name + ", surname=" + surname + ", userclass=" + userclass + "]";
+	}
+
 }
+	
+
+

@@ -68,6 +68,7 @@ public class CourseController {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+	
 	@PutMapping("/updateCourse/{id}")
 	public ResponseEntity<Course> updateCourse(@PathVariable("id") long id, @RequestBody Course course) {
 		Optional<Course> courseData = cr.findById(id);

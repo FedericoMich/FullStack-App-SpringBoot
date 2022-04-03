@@ -10,6 +10,4 @@ import GitClass.BE.BEANS.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 	List<User> findByNameContaining(String name);
-
-
 }

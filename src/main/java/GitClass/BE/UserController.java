@@ -49,8 +49,8 @@ public class UserController {
 	
 	
 	@GetMapping("/{id}")
-	  public ResponseEntity<User> getUserById(@PathVariable("id") long id) {
-	    Optional<User> userData = ur.findById(id);
+	  public ResponseEntity<List<User>> getUserByCourseId(@PathVariable("id") int idCourse) {
+	    Optional<List<User>> userData = ur.findByIdCourse(idCourse);
 	    if (userData.isPresent()) {
 	      return new ResponseEntity<>(userData.get(), HttpStatus.OK);
 	    } else {
@@ -60,8 +60,9 @@ public class UserController {
 
 
 	@PostMapping("/addUser/{id}")
-	public ResponseEntity<User> createUser(@RequestBody User user, @PathVariable Long id) {
+	public ResponseEntity<User> createUser(@RequestBody User user, @PathVariable int id) {
 		try {
+			user.setIdCourse(id);
 			return new ResponseEntity<>(ur.save(user),HttpStatus.CREATED);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);

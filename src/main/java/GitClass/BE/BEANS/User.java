@@ -9,6 +9,9 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
+	@Column(name = "idCourse")
+	private int idCourse;
+	
 	@Column(name = "name")
 	private String name;
 	
@@ -22,6 +25,15 @@ public class User {
 	public User() {
 	}
 	
+
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 	
 	public String getName() {
 		return name;
@@ -30,7 +42,7 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
 	public String getSurname() {
 		return surname;
 	}
@@ -45,6 +57,14 @@ public class User {
 
 	public void setRepos(String repos) {
 		this.repos = repos;
+	}
+	
+	public int getIdCourse() {
+		return idCourse;
+	}
+	
+	public void setIdCourse(int idCourse) {
+		this.idCourse = idCourse;
 	}
 
 }

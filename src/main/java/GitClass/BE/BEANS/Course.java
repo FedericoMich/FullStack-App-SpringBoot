@@ -17,11 +17,6 @@ public class Course {
 	private String year;
 	
 
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "fk_course", referencedColumnName = "id")
-	List<User> user = new ArrayList<>();
-	
-	
 	public Course() {
 	}
 	
@@ -52,12 +47,5 @@ public class Course {
 	public void setYear(String year) {
 		this.year = year;
 	}
-	
-	public List<User> getUser() {
-		return user;
-	}
-	public void setUser(List<User> user) {
-		this.user = user;
-	}
-	
+
 }
